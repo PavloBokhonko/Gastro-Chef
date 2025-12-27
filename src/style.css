@@ -80,6 +80,11 @@
     --shadow-lg: 0 0 30px 0 #5656564d;
     --shadow-xl: 0 0 40px 0 #5656564d;
 
+
+     
+    --text-40px: 40px;
+    --text-35px: 35px;
+    --text-26px: 26px;
     --text-3xs: 8px;
     --text-2xs: 10px;
 }
@@ -90,6 +95,7 @@
 }
 
 .burger.is-active .burger__icon:after {
+    /* opacity: 0; */
     top: 0;
     transform: rotate(-90deg);
 }
@@ -142,4 +148,20 @@
 
 .burger__icon:after {
     top: 14px;
+}
+
+.swiper { width: 100vw; margin-left: calc(-50vw + 50%); }
+
+.swiper {
+  overflow: visible !important;
+  height: auto !important;     
+}
+
+.swiper-wrapper {
+  height: auto !important;
+}
+
+.swiper-slide {
+  height: auto !important;
+  overflow: visible !important;
 }
