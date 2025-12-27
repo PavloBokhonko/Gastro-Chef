@@ -143,3 +143,12 @@
 .burger__icon:after {
     top: 14px;
 }
+
+.swiper {
+  overflow: visible !important; /* головне — щоб коло справа не обрізалося */
+  padding-bottom: 40px; /* місце для пагінації, якщо потрібно */
+}
+
+.swiper-wrapper {
+  align-items: center; /* вертикальне вирівнювання слайдів, якщо різна висота */
+}
