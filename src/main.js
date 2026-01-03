@@ -19,8 +19,7 @@ const swiper = new Swiper('.swiper', {
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
-        dynamicBullets: false,
-        dynamicMainBullets: 4,
+
 
         renderBullet: function (index, className) {
             return `
@@ -33,11 +32,26 @@ const swiper = new Swiper('.swiper', {
         }
     },
 
- /* 2πr = 31.4 */
- 
-
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
     },
 });
+
+const languageItem = document.querySelectorAll('.language-item')
+
+function remuveActiveClasses() {
+    languageItem.forEach(function(item) {
+        item.classList.remove('bg-green-400')
+        item.classList.remove('text-blue-300')
+    })
+}
+
+
+languageItem.forEach(function (element) {
+    element.addEventListener('click', function() {
+        remuveActiveClasses()
+        element.classList.add('bg-green-400')
+        element.classList.add('text-blue-300')
+    })
+})
