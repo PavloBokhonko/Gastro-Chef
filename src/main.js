@@ -55,3 +55,18 @@ languageItem.forEach(function (element) {
         element.classList.add('text-blue-300')
     })
 })
+
+
+const circularMenu = document.querySelector('.circular-menu')
+const circularMenuButton = document.querySelector('.circular-menu__button')
+const circularMenuIcon = document.querySelector('.circular-menu__icon use')
+
+circularMenuButton.addEventListener('click', function () {
+    circularMenu.classList.toggle('active')
+
+    if (circularMenu.classList.contains('active')) {
+        circularMenuIcon.setAttribute('href', '#icon-close')
+    } else {
+        circularMenuIcon.setAttribute('href', '#icon-feedback-button')
+    }
+})
