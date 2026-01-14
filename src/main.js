@@ -56,6 +56,35 @@ languageItem.forEach(function (element) {
     })
 })
 
+const categoryLink = document.querySelectorAll('.category-link')
+
+function removeActiveClassesCategoryNav() {
+    categoryLink.forEach(function (item) {
+        item.classList.add('lg:w-17.5')
+        item.classList.add('w-10.25')
+        item.classList.remove('lg:w-auto')
+        item.classList.remove('md:w-auto')
+        item.classList.remove('text-green-400')
+        item.querySelector('span').classList.add('hidden')
+    })
+}
+
+categoryLink.forEach(function (item) {
+    item.addEventListener('click', function (event) {
+        event.preventDefault()
+        removeActiveClassesCategoryNav()
+
+        item.classList.remove('lg:w-17.5')
+        item.classList.remove('w-10.25')
+        item.classList.add('lg:w-auto')
+        item.classList.add('md:w-auto')
+        item.classList.add('text-green-400')
+        item.querySelector('span').classList.remove('hidden')
+    })
+
+
+})
+
 
 const circularMenu = document.querySelector('.circular-menu')
 const circularMenuButton = document.querySelector('.circular-menu__button')
@@ -70,3 +99,219 @@ circularMenuButton.addEventListener('click', function () {
         circularMenuIcon.setAttribute('href', '#icon-feedback-button')
     }
 })
+
+document.addEventListener('click', function (event) {
+    const isClickInsideCircular = circularMenu.contains(event.target) ||
+        circularMenuButton.contains(event.target);
+
+    const isClickInsideCategory = Array.from(categoryLink).some(link =>
+        link.contains(event.target));
+
+    if (!isClickInsideCircular && circularMenu.classList.contains('active')) {
+        circularMenu.classList.remove('active');
+        circularMenuIcon.setAttribute('href', '#icon-feedback-button');
+    }
+
+    if (!isClickInsideCategory) {
+        const hasActiveCategory = Array.from(categoryLink).some(link =>
+            link.classList.contains('text-green-400'));
+
+        if (hasActiveCategory) {
+            removeActiveClassesCategoryNav();
+        }
+    }
+});
+
+const tabsBtn = document.querySelectorAll('[data-content-id]')
+const tabsContent = document.querySelectorAll('.tab-content')
+
+function removeActiveNavTabs() {
+    tabsBtn.forEach(function (btn) {
+        btn.classList.remove('active')
+    })
+}
+
+function hiddenActiveTabs() {
+    tabsContent.forEach(function (content) {
+        content.classList.remove('show')
+    })
+}
+
+tabsBtn.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+        removeActiveNavTabs()
+        btn.classList.add('active')
+
+        const id = btn.getAttribute('data-content-id')
+        const content = document.getElementById(id)
+
+        hiddenActiveTabs()
+        content.classList.add('show')
+    })
+})
+
+
+
+const programArr = [
+    {
+        maxi_fit: {},
+    },
+    {
+        strong: {},
+    },
+    {
+        balance_pluse: {},
+    },
+    {
+        balance: {},
+    },
+    {
+        fitness: {
+            descriptions: {
+                title: 'fitness',
+                kcal: '1300',
+                content: 'Программа здорового питания Express Fit. Идеально для: похудения в кратчайшие сроки, повышения энергии и сил, снижения веса при сидячем образе жизни.',
+                price_list: {
+                    test_day: {
+                        old_price: '510',
+                        price: '357'
+                    },
+                    day_1: {
+                        old_price: false,
+                        price: "510"
+                    },
+                    day_7: {
+                        old_price: '510',
+                        price: "490"
+                    },
+                    day_14: {
+                        old_price: '510',
+                        price: "470"
+                    },
+                    day_30: {
+                        old_price: '510',
+                        price: "445"
+                    },
+                    breakfast_and_dinner: {
+                        old_price: '-15%',
+                        price: "433"
+                    },
+                }
+            },
+            week: {
+                mon: {
+                    eating: [
+                        {
+                            eating_title: 'Завтрак',
+                            eating_time: '7:00 - 9:00',
+                            eating_menu: [
+                                {
+                                    menu_item: [
+                                        {
+                                            item_title: '- Фриттата с сыром и кабачками',
+                                            item_quantity: '170гр',
+                                        },
+                                    ]
+                                },
+                            ],
+                        },
+                        {
+                            eating_title: '2-й завтрак',
+                            eating_time: '10:00 - 12:00',
+                            eating_menu: [
+                                {
+                                    menu_item: [
+                                        {
+                                            item_title: '- Фермерский йогурт',
+                                            item_quantity: '200гр',
+                                        },
+                                        {
+                                            item_title: '- Полезное печенье из сухофруктов и орехов',
+                                            item_quantity: '2шт',
+                                        },
+                                    ]
+                                },
+                            ],
+                        },
+                        {
+                            eating_title: 'Обед',
+                            eating_time: '13:00 - 15:00',
+                            eating_menu: [
+                                {
+                                    menu_item: [
+                                        {
+                                            item_title: '- Люля-кебаб из индейки',
+                                            item_quantity: '100гр',
+                                        },
+                                        {
+                                            item_title: '- Летний салат с маслинами и сыром',
+                                            item_quantity: '100гр',
+                                        },
+                                    ]
+                                },
+                            ],
+                        },
+                        {
+                            eating_title: 'Полдник',
+                            eating_time: '16:00 - 17:30',
+                            eating_menu: [
+                                {
+                                    menu_item: [
+                                        {
+                                            item_title: '- Творожное суфле с какао и вишей',
+                                            item_quantity: '100гр',
+                                        },
+
+                                    ]
+                                },
+                            ],
+                        },
+                        {
+                            eating_title: 'Ужин',
+                            eating_time: '19:00 - 20:00',
+                            eating_menu: [
+                                {
+                                    menu_item: [
+                                        {
+                                            item_title: '- Рыбный терен',
+                                            item_quantity: '100гр',
+                                        },
+                                        {
+                                            item_title: '- Овощи гриль',
+                                            item_quantity: '100гр',
+                                        },
+                                    ]
+                                },
+                            ],
+                        },
+                    ],
+                },
+                tue: {
+
+                },
+                wed: {
+
+                },
+                thu: {
+
+                },
+                fri: {
+
+                },
+                sat: {
+
+                },
+                sun: {
+
+                },
+
+            }
+        },
+    },
+    {
+        slim: {},
+    },
+    {
+        express_eit: {},
+    },
+]

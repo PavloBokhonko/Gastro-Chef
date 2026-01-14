@@ -207,6 +207,36 @@
     }
 }
 
+.btn {
+    background-color: var(--color-green-400);
+    padding: 12px 24px;
+    cursor: pointer;
+    &:hover {
+        background-color:  #2bff00;
+    }
+    &.active {
+        background-color: orange;
+    }
+}
+
+.tab-content {
+    display: none;
+    &.show {
+        display: block;
+    }
+}
+
+.program__category {
+    .active {
+        background-color: var(--color-green-400);
+    }
+}
+
+.program__week {
+     .active {
+        background-color: var(--color-green-400);
+    }
+}
 
 
 
