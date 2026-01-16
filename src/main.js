@@ -38,6 +38,14 @@ const swiper = new Swiper('.swiper', {
     },
 });
 
+const swiper_dishes = new Swiper ('.swiper_dishes', {
+  slidesPerView: 4,
+  spaceBetween: 5,
+  loop: true,
+  freeMode: true,
+  grabCursor: true,
+});
+
 const languageItem = document.querySelectorAll('.language-item')
 
 function remuveActiveClasses() {
